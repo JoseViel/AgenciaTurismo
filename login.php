@@ -11,14 +11,14 @@
     <div class="form-container">
         <div class="form-screen">
             <div class="form-screen__content">
-                <form class="form-login">
+                <form class="form-login" action="validaAdmin.php" method="POST">
                     <div class="form-login__field">
                         <i class="form-login__icon fas fa-user"></i>
-                            <input type="text" class="form-login__input" id="login" placeholder="Nome ou Email do usuário" required>
+                            <input type="text" class="form-login__input" name="email" id="email" placeholder="Email" required>
                     </div>
                     <div class="form-login__field">
                         <i class="form-login__icon fas fa-lock"></i>
-                            <input type="password" class="form-login__input" id="senha" placeholder="Senha" required>
+                            <input type="password" class="form-login__input" name="senha" id="senha" placeholder="Senha" required>
                     </div>
                     <button class="form-button form-login__submit">
                         <span class="form-button__text">Entrar</span>
