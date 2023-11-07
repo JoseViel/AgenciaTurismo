@@ -1,0 +1,195 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body {
+    background: #575656;
+}
+
+nav {
+    display: flex;
+    justify-content: flex-end;
+    font-family: 'Poppins', sans-serif;
+    margin-top: 10px;
+    color: #202020;
+}
+
+.body-login{
+    background-image: url('img/visto.avif');
+    background-position: center 0;
+}
+
+.form-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.form-screen {
+    width: 400px;
+    height: 600px;
+    position: relative;
+    box-shadow: 0px 0px 24px #555;
+    background: linear-gradient(90deg , rgb(107, 107, 100), #575656);
+}
+
+.form-screen__content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+.form-screen__background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+    -webkit-clip-path: inset(0 0 0 0);
+    clip-path: inset(0 0 0 0);
+}
+
+.form-screen__background__shape {
+    position: absolute;
+    transform: rotate(45deg);
+}
+
+.form-screen__background__shape1 {
+    height: 520px;
+    width: 520px;
+    top: -50px;
+    right: 150px;
+    border-radius: 0 72px 0 0;
+    background: rgb(199, 162, 58);
+}
+
+.form-screen__background__shape2 {
+    height: 220px;
+    width: 220px;
+    top: -172px;
+    right: 0;
+    border-radius: 32px;
+    background: rgb(199, 162, 58);
+}
+
+.form-screen__background__shape3 {
+    height: 540px;
+    width: 190px;
+    top: -24px;
+    right: 0;
+    border-radius: 32px;
+    background: rgb(107, 107, 100);
+}
+
+.form-screen__background__shape4 {
+    height: 400px;
+    width: 200px;
+    top: 420px;
+    right: 50px;
+    border-radius: 60px;
+    background: rgb(199, 162, 58);
+}
+
+.form-login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 320px;
+    padding: 30px;
+    border-radius: 8px;
+    background-color: #FFF;
+}
+
+.form-login p{
+    font-size: 13px;
+    color: rgb(107, 107, 100);
+    padding: 20px 0px;
+}
+
+.form-login a{
+    font-size: 13px;
+    color: rgb(199, 162, 58);
+}
+
+.form-login__field {
+    position: relative;
+    padding: 20px 0px;
+}
+
+.form-login__icon {
+    position: absolute;
+    top: 30px;
+    color: rgb(107, 107, 100);;
+}
+
+.form-login__input {
+    background: none;
+    border: none;
+    border-bottom: 2px solid rgb(107, 107, 100);
+    padding: 10px;
+    padding-left: 24px;
+    font-weight: 700;
+    transition: .2s;
+}
+
+.form-login__input:active,
+.form-login__input:focus,
+.form-login__input:hover {
+    outline: none;
+    border-bottom-color: rgb(107, 107, 100);;
+}
+
+.form-login__submit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    width: 70%;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: rgb(107, 107, 100);
+    margin-top: 24px;
+    padding: 16px 20px;
+    border-radius: 30px;
+    border: 1px solid rgb(107, 107, 100);
+    box-shadow: 0px 2px 2px rgb(107, 107, 100);
+    background: #FFF;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.form-login__submit:active,
+.form-login__submit:focus,
+.form-login__submit:hover {
+    outline: none;
+    color: rgb(199, 162, 58);
+}
+
+.pais {
+    text-align: center;
+    padding: 32px;
+}
+
+.pais h3 {
+    font-size: 32px;
+    border-bottom: 4px solid;
+    display: inline-block;
+    padding-bottom: 8px;
+}
+
+.pais-descricao {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 32px;
+    flex-wrap: wrap;
+}
