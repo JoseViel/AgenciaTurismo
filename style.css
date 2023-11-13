@@ -145,7 +145,7 @@ nav {
 .form-login__input:focus,
 .form-login__input:hover {
     outline: none;
-    border-bottom-color: rgb(107, 107, 100);;
+    border-bottom-color: rgb(107, 107, 100);
 }
 
 .form-login__submit {

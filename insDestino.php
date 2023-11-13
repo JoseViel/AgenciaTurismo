@@ -4,14 +4,13 @@
 
     $nome_pais = trim($_POST['nome_pais']);
     $nome_cidade = trim($_POST['nome_cidade']);
-    $id = trim($_POST['id']);
 
-    if (!empty($nome_pais) && !empty($nome_cidade) && !empty($id)){
+    if (!empty($nome_pais) && !empty($nome_cidade)){
         $pdo = Conexao::conectar(); 
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
-        $sql = "INSERT INTO destino(nome_pais, nome_cidade, id) VALUES (?,?,?)"; 
+        $sql = "INSERT INTO destino(nome_pais, nome_cidade) VALUES (?,?)"; 
         $query = $pdo->prepare($sql);
-        $query->execute(array($nome_pais, $nome_cidade, $id));
+        $query->execute(array($nome_pais, $nome_cidade));
         Conexao::desconectar(); 
     }
 

@@ -3,8 +3,8 @@
 include 'conexao.php';
 
 $pdo = Conexao::conectar();
-$sql = "select * from cliente order by idCliente;";
-$lstCliente = $pdo->query($sql);
+$sql = "select * from tipo_apartamento order by id;";
+$lstApartamento = $pdo->query($sql);
 Conexao::desconectar();
 
 session_start();
@@ -33,7 +33,7 @@ $id = $_SESSION['id'];
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <title>Lista de Clientes</title>
+    <title>Lista de Apartamentos</title>
 </head>
 
 <body style="background-image: url('img/travel.png');
@@ -62,16 +62,16 @@ $id = $_SESSION['id'];
         <div class="row">
             <div class="col s12">
                 <h3 class="black-text text-lighten-3">
-                    LISTA DE CLIENTES
+                    LISTA DE APARTAMENTOS
                 </h3>
                 <a class="btn-floating btn-large waves-effect waves-light grey darken-1 accent-3" onclick="JavaScript:location.href='dashboardCadastro.php'">
                     <i class="material-icons">keyboard_backspace</i>
                 </a>
-                <a class="btn-floating btn-large waves-effect waves-light green" onclick="JavaScript:location.href='cadastroCliente.php'"><i class="material-icons">add</i></a>
+                <a class="btn-floating btn-large waves-effect waves-light green" onclick="JavaScript:location.href='cadastroApartamento.php'"><i class="material-icons">add</i></a>
 
                 <div class="row">
                     <div class="input-field">
-                        <form action="lstCliente.php" method="GET" id="frmBuscaClientes" class="col s12">
+                        <form action="lstApartamento.php" method="GET" id="frmBuscaApartamento" class="col s12">
                             <div class="input-field col s12">
 
                                 <input type="search" placeholder="Pesquisar" class="form-control col s6" id="pesquisar" name="pesquisar">
@@ -86,28 +86,22 @@ $id = $_SESSION['id'];
                     <tr class="blue-grey darken-4 grey-text text-lighten-3">
                         <th>Id</th>
                         <th>Nome</th>
-                        <th>CPF</th>
-                        <th>Email</th>
-                        <th>Telefone</th>
-                        <th>Endereço</th>
+                        <th>Descrição</th>
                         <th>Editar</th>
                         <th>Remover</th>
                     </tr>
                     <?php
-                    foreach ($lstCliente as $cliente) {
+                    foreach ($lstApartamento as $tipo_apartamento) {
                     ?>
                         <tr>
-                            <td><?php echo $cliente['idCliente']; ?></td>
-                            <td><?php echo $cliente['nome']; ?></td>
-                            <td><?php echo $cliente['cpf']; ?></td>
-                            <td><?php echo $cliente['email']; ?></td>
-                            <td><?php echo $cliente['telefone']; ?></td>
-                            <td><?php echo $cliente['endereco']; ?></td>
-                            <td> <a class="btn-floating btn-small waves-effect waves-light green" onclick="JavaScript:location.href='frmEdtCliente.php?id=' +
-                          <?php echo $cliente['idCliente']; ?>">
+                            <td><?php echo $tipo_apartamento['id']; ?></td>
+                            <td><?php echo $tipo_apartamento['nome']; ?></td>
+                            <td><?php echo $tipo_apartamento['descricao']; ?></td>
+                            <td> <a class="btn-floating btn-small waves-effect waves-light green" onclick="JavaScript:location.href='frmEdtApartamento.php?id=' +
+                          <?php echo $tipo_apartamento['id']; ?>">
                                     <i class="material-icons">edit</i>
                             </td>
-                            <td> <a class="btn-floating btn-small waves-effect waves-light red" onclick="JavaScript:remover(<?php echo $cliente['idCliente']; ?>)">
+                            <td> <a class="btn-floating btn-small waves-effect waves-light red" onclick="JavaScript:remover(<?php echo $tipo_apartamento['id']; ?>)">
                                     <i class="material-icons">delete</i>
                             </td>
                         </tr>
@@ -123,9 +117,9 @@ $id = $_SESSION['id'];
 </html>
 
 <script>
-    function remover(idCliente) {
-        if (confirm('Excluir o cliente ' + idCliente + '?')) {
-            location.href = 'remCliente.php?idCliente=' + idCliente;
+    function remover(id) {
+        if (confirm('Excluir o apartamento ' + id + '?')) {
+            location.href = 'remApartamento.php?id=' + id;
         }
     }
 
@@ -139,6 +133,6 @@ $id = $_SESSION['id'];
     });
 
     function searchData (){
-        window.location = 'lstCliente.php?search='+search.value;
+        window.location = 'lsttipo_apartamento.php?search='+search.value;
     }
 </script>

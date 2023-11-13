@@ -12,7 +12,7 @@
     if (!empty($funcionario) && !empty($cliente) && !empty($pacote) && !empty($status) && !empty($data_reserva)){
         $pdo = Conexao::conectar(); 
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
-        $sql = "INSERT INTO reserva(companhia, cliente, pacote, status, data_reserva) VALUES (?,?,?,?,?)"; 
+        $sql = "INSERT INTO reserva(funcionario, cliente, pacote, status, data_reserva) VALUES (?,?,?,?,?)"; 
         $query = $pdo->prepare($sql);
         $query->execute(array($funcionario, $cliente, $pacote, $status, $data_reserva));
         Conexao::desconectar(); 

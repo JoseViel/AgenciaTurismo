@@ -13,7 +13,7 @@
     if (!empty($funcionario) && !empty($cliente) && !empty($pacote) && !empty($status) && !empty($data_reserva) && !empty($idReserva)){
         $pdo = Conexao::conectar(); 
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
-        $sql = "UPDATE reserva SET companhia=?, cliente=?, pacote=?, status=?, data_reserva=? WHERE idReserva=?"; 
+        $sql = "UPDATE reserva SET funcionario=?, cliente=?, pacote=?, status=?, data_reserva=? WHERE idReserva=?"; 
         $query = $pdo->prepare($sql);
         $query->execute(array($funcionario, $cliente, $pacote, $status, $data_reserva, $idReserva));
         Conexao::desconectar(); 

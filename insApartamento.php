@@ -4,14 +4,13 @@
 
     $nome = trim($_POST['nome']);
     $descricao = trim($_POST['descricao']);
-    $id = trim($_POST['id']);
 
-    if (!empty($nome) && !empty($descricao) && !empty($id)){
+    if (!empty($nome) && !empty($descricao)){
         $pdo = Conexao::conectar(); 
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
-        $sql = "INSERT INTO tipo_apartamento(nome, descricao, id) VALUES (?,?,?)"; 
+        $sql = "INSERT INTO tipo_apartamento(nome, descricao) VALUES (?,?)"; 
         $query = $pdo->prepare($sql);
-        $query->execute(array($nome, $descricao, $id));
+        $query->execute(array($nome, $descricao));
         Conexao::desconectar(); 
     }
 

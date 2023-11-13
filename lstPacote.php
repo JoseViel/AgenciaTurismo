@@ -3,8 +3,16 @@
 include 'conexao.php';
 
 $pdo = Conexao::conectar();
-$sql = "select * from cliente order by idCliente;";
-$lstCliente = $pdo->query($sql);
+$sql = "select * from pacote order by idPacote;";
+$lstPacote = $pdo->query($sql);
+$sql = "select * from destino order by id;";
+$lstDestino = $pdo->query($sql);
+$sql = "select * from passagem_aerea order by idPassagem;";
+$lstPassagem = $pdo->query($sql);
+$sql = "select * from tipo_apartamento order by id;";
+$lstApartamento = $pdo->query($sql);
+$sql = "select * from hotel order by id;";
+$lstHotel = $pdo->query($sql);
 Conexao::desconectar();
 
 session_start();
@@ -33,7 +41,7 @@ $id = $_SESSION['id'];
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <title>Lista de Clientes</title>
+    <title>Lista de Pacotes</title>
 </head>
 
 <body style="background-image: url('img/travel.png');
@@ -54,6 +62,7 @@ $id = $_SESSION['id'];
                 <li><a href="lstDestino.php">Destinos</a></li>
                 <li><a href="lstApartamento.php">Apartamentos</a></li>
                 <li><a href="lstReserva.php">Reservas</a></li>
+
                 <li><a href="logout.php">Logout</a></li>
             </ul>
         </div>
@@ -62,16 +71,16 @@ $id = $_SESSION['id'];
         <div class="row">
             <div class="col s12">
                 <h3 class="black-text text-lighten-3">
-                    LISTA DE CLIENTES
+                    LISTA DE PACOTES
                 </h3>
                 <a class="btn-floating btn-large waves-effect waves-light grey darken-1 accent-3" onclick="JavaScript:location.href='dashboardCadastro.php'">
                     <i class="material-icons">keyboard_backspace</i>
                 </a>
-                <a class="btn-floating btn-large waves-effect waves-light green" onclick="JavaScript:location.href='cadastroCliente.php'"><i class="material-icons">add</i></a>
+                <a class="btn-floating btn-large waves-effect waves-light green" onclick="JavaScript:location.href='cadastroPacote.php'"><i class="material-icons">add</i></a>
 
                 <div class="row">
                     <div class="input-field">
-                        <form action="lstCliente.php" method="GET" id="frmBuscaClientes" class="col s12">
+                        <form action="lstPacote.php" method="GET" id="frmBuscaPacotes" class="col s12">
                             <div class="input-field col s12">
 
                                 <input type="search" placeholder="Pesquisar" class="form-control col s6" id="pesquisar" name="pesquisar">
@@ -86,28 +95,52 @@ $id = $_SESSION['id'];
                     <tr class="blue-grey darken-4 grey-text text-lighten-3">
                         <th>Id</th>
                         <th>Nome</th>
-                        <th>CPF</th>
-                        <th>Email</th>
-                        <th>Telefone</th>
-                        <th>Endereço</th>
+                        <th>Descrição</th>
+                        <th>Valor</th>
+                        <th>Destino</th>
+                        <th>Passagem Aérea</th>
+                        <th>Hotel</th>
+                        <th>Apartamento</th>
                         <th>Editar</th>
                         <th>Remover</th>
                     </tr>
                     <?php
-                    foreach ($lstCliente as $cliente) {
+                    foreach ($lstPacote as $pacote) {
                     ?>
                         <tr>
-                            <td><?php echo $cliente['idCliente']; ?></td>
-                            <td><?php echo $cliente['nome']; ?></td>
-                            <td><?php echo $cliente['cpf']; ?></td>
-                            <td><?php echo $cliente['email']; ?></td>
-                            <td><?php echo $cliente['telefone']; ?></td>
-                            <td><?php echo $cliente['endereco']; ?></td>
-                            <td> <a class="btn-floating btn-small waves-effect waves-light green" onclick="JavaScript:location.href='frmEdtCliente.php?id=' +
-                          <?php echo $cliente['idCliente']; ?>">
+                            <td><?php echo $pacote['idPacote']; ?></td>
+                            <td><?php echo $pacote['nome']; ?></td>
+                            <td><?php echo $pacote['descricao']; ?></td>
+                            <td><?php echo $pacote['valor']; ?></td>
+                            <td><?php 
+                                foreach($lstDestino as $destino){
+                                if($destino['id'] == $pacote['destino']){
+                                    echo $destino['Nome_Pais'] . " - " . $destino['Nome_Cidade'];
+                                }
+                             }?></td>
+                            <td><?php 
+                                foreach($lstPassagem as $passagem){
+                                if($passagem['idPassagem'] == $pacote['passagem_aerea']){
+                                    echo $passagem['companhia'] . " - " . $passagem['embarque'];
+                                }
+                             } ?></td>
+                            <td><?php 
+                                foreach($lstHotel as $hotel){
+                                if($hotel['id'] == $pacote['hotel']){
+                                    echo $hotel['nome'];
+                                }
+                             } ?></td>
+                            <td><?php 
+                                foreach($lstApartamento as $apartamento){
+                                if($apartamento['id'] == $pacote['apto']){
+                                    echo $apartamento['nome'];
+                                }
+                             } ?></td>
+                            <td> <a class="btn-floating btn-small waves-effect waves-light green" onclick="JavaScript:location.href='frmEdtPacote.php?idPacote=' +
+                          <?php echo $pacote['idPacote']; ?>">
                                     <i class="material-icons">edit</i>
                             </td>
-                            <td> <a class="btn-floating btn-small waves-effect waves-light red" onclick="JavaScript:remover(<?php echo $cliente['idCliente']; ?>)">
+                            <td> <a class="btn-floating btn-small waves-effect waves-light red" onclick="JavaScript:remover(<?php echo $pacote['idPacote']; ?>)">
                                     <i class="material-icons">delete</i>
                             </td>
                         </tr>
@@ -123,9 +156,9 @@ $id = $_SESSION['id'];
 </html>
 
 <script>
-    function remover(idCliente) {
-        if (confirm('Excluir o cliente ' + idCliente + '?')) {
-            location.href = 'remCliente.php?idCliente=' + idCliente;
+    function remover(idPacote) {
+        if (confirm('Excluir o pacote ' + idPacote + '?')) {
+            location.href = 'rempacote.php?idPacote=' + idPacote;
         }
     }
 
@@ -139,6 +172,6 @@ $id = $_SESSION['id'];
     });
 
     function searchData (){
-        window.location = 'lstCliente.php?search='+search.value;
+        window.location = 'lstPacote.php?search='+search.value;
     }
 </script>
