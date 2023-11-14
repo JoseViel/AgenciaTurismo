@@ -117,7 +117,7 @@ $id = $_SESSION['id'];
                                 if($destino['id'] == $pacote['destino']){
                                     echo $destino['Nome_Pais'] . " - " . $destino['Nome_Cidade'];
                                 }
-                             }?></td>
+                             } ?></td>
                             <td><?php 
                                 foreach($lstPassagem as $passagem){
                                 if($passagem['idPassagem'] == $pacote['passagem_aerea']){

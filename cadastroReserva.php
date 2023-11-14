@@ -70,7 +70,7 @@ Conexao::desconectar();
                         </select>
                     </div>
                     <div class="form-login__field">
-                        <i class="form-login__icon fa-solid fa-location-dot"></i>
+                        <i class="form-login__icon fa-solid fa-credit-card"></i>
                             <input type="text" class="form-login__input" name="status" id="status" placeholder="Status do Pagamento" required>
                     </div>
                     <div class="form-login__field">

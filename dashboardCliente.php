@@ -9,14 +9,18 @@
 </head>
 <style>
     body {
-    margin: 0px;
-    padding: 0px;
-    font-family: 'Poppins', sans-serif;
-    background-image: url('img/paisagem0123.jpg');
-    background-repeat: none;
-    background-position: center 0;
-    background-size: auto;
-}
+        margin: 0px;
+        padding: 0px;
+        font-family: 'Poppins', sans-serif;
+        background-image: url('img/paisagem0123.jpg');
+        background-repeat: none;
+        background-position: center 0;
+        background-size: auto;
+    }
+
+    h1 {
+        color: white;
+    }
 </style>
 <body>
     <div class="header" id="header">
@@ -26,7 +30,7 @@
             </svg>
         </button>
         <div class="logo_header">
-            <img src="img/aviao-logo.png" alt="Logo Avião" class="img_logo_header">
+            <h1>Viel Turismo</h1>
         </div>
         <div class="navigation_header" id="navigation_header">
             <button onclick="toggleSidebar()" class="btn_icon_header">

@@ -94,13 +94,13 @@ $id = $_SESSION['id'];
             <a href="" class="brand-logo right"></a>
             <ul id="nav-mobile">
                 <li><a href="choose.php">Home</a></li>
-                <li><a href="lstCliente.php">Clientes</a></li>
-                <li><a href="lstPacote.php">Pacotes</a></li>
-                <li><a href="lstHotel.php">Hotéis</a></li>
-                <li><a href="lstPassagem.php">Passagens Aéreas</a></li>
-                <li><a href="lstDestino.php">Destinos</a></li>
-                <li><a href="lstApartamento.php">Apartamentos</a></li>
-                <li><a href="lstReserva.php">Reservas</a></li>
+                <li><a href="cadastroCliente.php">Clientes</a></li>
+                <li><a href="cadastroPacote.php">Pacotes</a></li>
+                <li><a href="cadastroHotel.php">Hotéis</a></li>
+                <li><a href="cadastroPassagem.php">Passagens Aéreas</a></li>
+                <li><a href="cadastroDestino.php">Destinos</a></li>
+                <li><a href="cadastroApartamento.php">Apartamentos</a></li>
+                <li><a href="cadastroReserva.php">Reservas</a></li>
                 <li><a href="logout.php">Logout</a></li>
             </ul>
         </div>
