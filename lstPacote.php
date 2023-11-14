@@ -158,7 +158,7 @@ $id = $_SESSION['id'];
 <script>
     function remover(idPacote) {
         if (confirm('Excluir o pacote ' + idPacote + '?')) {
-            location.href = 'rempacote.php?idPacote=' + idPacote;
+            location.href = 'remPacote.php?idPacote=' + idPacote;
         }
     }
 

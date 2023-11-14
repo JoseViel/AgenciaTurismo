@@ -149,8 +149,8 @@ $id = $_SESSION['id'];
                     <span>Ver Mais</span>
                 </div>
                 <div class="card">
-                    <i class="fas fa-credit-card"></i>
-                    <h3>Recebimentos</h3>
+                    <i class="fas fa-user"></i>
+                    <h3>Logout</h3>
                     <span>Ver Mais</span>
                 </div>
             </div>

@@ -101,7 +101,7 @@ Conexao::desconectar();
                         <select class="browser-default" name="passagem_aerea" value="passagem_aerea" id="passagem_aerea">
                             <?php foreach ($lstPassagem as $passagem){ ?>
                             <option value="<?php echo $passagem['idPassagem']?>" name="passagem_aerea" id="passagem_aerea">
-                            <?php echo $passagem['data_ida'] . " - " . $passagem['data_volta']?>
+                            <?php echo $passagem['companhia'] . " - " . $passagem['embarque']?>
                         </option>
                         <?php
                             }
@@ -120,8 +120,8 @@ Conexao::desconectar();
                         </select>
                     </div>
                     <div class="input-field col s6">
-                        <?php foreach ($lstApartamento as $apartamento){ ?>
                         <select class="browser-default" name="apto" value="apto" id="apto">
+                        <?php foreach ($lstApartamento as $apartamento){ ?>
                             <option value="<?php echo $apartamento['id']?>" name="apto" id="apto">
                             <?php echo $apartamento['id'] . " - " . $apartamento['nome']?>
                         </option>

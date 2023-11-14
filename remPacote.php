@@ -1,10 +1,10 @@
 <?php
 
-   $idPacote = trim($_GET['idPacote']); 
+   $idPacote = trim($_GET['idPacote']);
    
    include 'conexao.php';
    
-    if (!empty($idPacote) ){
+    if (!empty($idPacote)){
         $sql = "DELETE from pacote WHERE idPacote=?";
 
         $pdo = Conexao::conectar(); 

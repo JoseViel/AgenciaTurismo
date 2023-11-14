@@ -1,14 +1,14 @@
 <?php
 
-$id = $_GET['id'];
-
 include 'conexao.php';
+
+$id = $_GET['id'];
 
 $pdo = Conexao::conectar();
 $sql = "select * from hotel where id=?;";
 $query = $pdo->prepare($sql);
 $query->execute(array($id));
-$id = $query->fetch(PDO::FETCH_ASSOC);
+$hotel = $query->fetch(PDO::FETCH_ASSOC);
 Conexao::desconectar();
 
 ?>
@@ -49,8 +49,8 @@ Conexao::desconectar();
         <div class="row">
             <form action="edtHotel.php " method="POST" id="frmEdtHotel" class="col s12">
                 <div class="input-field col s8">
-                    <h3><label for="idHotel" class="black-text bold"><b>ID: <?php echo $id; ?> </b></label> </h3>
-                    <input type="hidden" name="idhotel" id="idHotel" value="<?php echo $id; ?>">
+                    <h3><label for="id" class="black-text bold"><b>ID: <?php echo $id; ?> </b></label> </h3>
+                    <input type="hidden" name="id" id="id" value="<?php echo $id; ?>">
                 </div>
                 <br>
                 <div class="input-field col s5">
